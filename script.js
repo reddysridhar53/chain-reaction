@@ -42,6 +42,7 @@ function selectNoOfPlayers()
 
 function resetCanvas()
 {
+	window.location.reload();
 	gameArena.clearRect(0, 0, width, height);
 	clearInterval(gameTimer);
 	colors = orginalColors;
