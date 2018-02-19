@@ -43,11 +43,11 @@ function selectNoOfPlayers()
 function resetCanvas()
 {
 	window.location.reload();
-	gameArena.clearRect(0, 0, width, height);
-	clearInterval(gameTimer);
-	colors = orginalColors;
-	document.getElementById("undo").style.visibility = "hidden";
-	noOfPlayersOption.value = "null";
+	// gameArena.clearRect(0, 0, width, height);
+	// clearInterval(gameTimer);
+	// colors = orginalColors;
+	// document.getElementById("undo").style.visibility = "hidden";
+	// noOfPlayersOption.value = "null";
 }
 
 function initialise()
