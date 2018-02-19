@@ -46,11 +46,11 @@ function resetCanvas()
 	clearInterval(gameTimer);
 	colors = orginalColors;
 	document.getElementById("undo").style.visibility = "hidden";
+	noOfPlayersOption.value = "null";
 }
 
 function initialise()
 {
-
 	document.getElementById("undo").style.visibility = noOfPlayers != "null" ? "visible" : "hidden";
 	isGameOver = false;
 	matrixDefault();
@@ -275,9 +275,10 @@ function checkGameOver()
 	if(gameOver())
 	{
 		isGameOver = true;
+		var playerWon = gameOver();
 		document.getElementById("undo").style.visibility = "hidden";
 		drawArena();
-		setTimeout(gameOverScreen.bind(null,gameOver()), 1000);
+		gameOverScreen(playerWon);
 		clearInterval(gameTimer);
 		setTimeout(resetCanvas, 5000);
 	}
@@ -338,6 +339,7 @@ function gameOver()
 				colors.splice(colors.indexOf(color), 1)
 			}
 		}
+		if(noOfPlayers > playersIn) turnCount = turnCount - (noOfPlayers - playersIn);
 		noOfPlayers = playersIn;
 		if(noOfPlayers == 1){
 			return orginalColors.indexOf(color)+1;
@@ -352,7 +354,7 @@ function gameOverScreen(player)
 	gameArena.fillRect(0, 0, width, height);
 	gameArena.fillStyle = "white";
 	gameArena.font = "40px Times New Roman";
-	gameArena.fillText("Player "+player+" wins!", width/2 - 150, height/2 - 50);
+	gameArena.fillText("Player "+ player + " wins!", width/2 - 150, height/2 - 50);
 }
 
 function oneCircle(row, column, color)
